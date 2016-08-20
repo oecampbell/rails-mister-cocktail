@@ -1,20 +1,18 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);">
-  <div class="banner-content">
-    <h1 class="text-center"><%= @cocktail.name %></h1>
-    <%= link_to 'Back', cocktails_path %>
-  </div>
-</div>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path "background.jpg" %>);">
 
 <div class="container">
-
-   <ul>
-      <% @cocktail.doses.each do |dose| %>
-        <li>
-          <%= dose.description %> of <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %>
-          (<%= link_to "delete", dose_path(dose), method: :delete %>)
-        </li>
-      <% end %>
-    </ul>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1><%= @cocktail.name %></h1>
+        </div>
+        <ul class="card-padding-top-btm">
+          <% @cocktail.doses.each do |dose| %>
+            <li>
+              <%= dose.description %> of <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %>
+              (<%= link_to "delete", cocktail_dose_path(@cocktail, dose), method: :delete %>)
+            </li>
+          <% end %>
+        </ul>
 
       <%= simple_form_for [@cocktail, @dose] do |f| %>
 
@@ -30,6 +28,8 @@
         <%= f.input :ingredient_id, collection: Ingredient.all, prompt: "Choose one" %>
 
         <%= f.submit "Add dose", class: "btn btn-primary"%>
-      <% end %>
-
+      <% end %> </br>
+      <%= link_to 'Back', cocktails_path %>
+    </div>
+  </div>
 </div>
