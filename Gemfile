@@ -29,9 +29,11 @@ gem 'jbuilder', '~> 2.5'
 #
 #
 ## ADDITIONS for images
-gem 'attachinary'
 gem 'figaro'
-gem 'cloudinary'
+gem 'cloudinary', '1.1.0'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+
 
 # Front end gems
 gem 'bootstrap-sass'

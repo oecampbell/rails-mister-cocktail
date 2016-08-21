@@ -24,6 +24,10 @@
       </ul>
     <% end %>
 
+    <% if @cocktail.photo? %>
+      <%= cl_image_tag @cocktail.photo.path, width: 200, height: 300, crop: :fill %>
+    <% end %>
+
     <%= f.input :description, placeholder: "2 teaspoons" %>
     <%= f.input :ingredient_id, collection: Ingredient.all, prompt: "Choose one" %>
 
@@ -32,3 +36,5 @@
     <%= link_to 'Back', cocktails_path %>
   </div>
 </div>
+
+
